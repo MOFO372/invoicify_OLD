@@ -49,14 +49,7 @@ public class User implements UserDetails{
 	
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//list is acting as an interface, array list is storing the list items
-//		List<String> roleNames = new ArrayList<String>();
-//		for (UserRole role : roles) {
-//			roleNames.add(role.getName()); 
-//		}
-		
-		
+	public Collection<? extends GrantedAuthority> getAuthorities() {		
 		//this is a lambda, takes an input and converts it 
 		List<String> roleNames = roles.stream()
 			.map(userRole -> "ROLE_" + userRole.getName()) //find a user role and return a user role name, turns each user role into a string; need ROLE_ since spring formats role names this way
